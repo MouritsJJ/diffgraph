@@ -1,0 +1,19 @@
+# All of this should be the same as training file
+diffusion:
+    timesteps: 500
+    noise_schedule: Cosine # Cosine, Linear
+    beta_min: 0.0
+    beta_max: 0.999
+
+dataset:
+    name: QM9Data # Must match class name in datasets folder
+    batch_size: 512 # per GPU
+    val_batch_size: 20 # Total
+    path: data/qm9
+    remove_h: True
+    categorical_types: True
+
+sampling:
+    run_name: cat_noH_cosine # Same as training run_name
+    n_samples: 10000
+    model_path: runs/cat_noH_cosine/models/epoch_325_model.pt

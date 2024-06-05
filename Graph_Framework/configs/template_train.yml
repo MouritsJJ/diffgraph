@@ -1,0 +1,26 @@
+model:
+    name: Model name # Must match class name in models folder
+    params: # Dictionary passed to the model as a dictionary
+
+optim:
+    name: Optimiser name # AdamW, Adam
+    params: # Dictionary passed to the optimiser as **params
+
+diffusion:
+    timesteps: Number of timesteps
+    noise_schedule: Schedule # Cosine, Linear
+    beta_min: 0.0
+    beta_max: 0.999
+
+dataset:
+    name: Dataset name # Must match class name in datasets folder
+    batch_size: 512 # per GPU
+    val_batch_size: 20 # Total
+    train_split_size: 100000 # Optional. Number in samples in training split, remaining will be in validaiton split
+    
+training:
+    epochs: 1000
+    run_name: TestName # Name of folder created in /runs
+    val_n_epochs: 5 # Run validation and save a checkpoint every n epoch 
+    resume_epoch: 0 # Resume from an epoch that has a checkpoint
+    

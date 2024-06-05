@@ -1,0 +1,51 @@
+model:
+    name: NNCat # Must match class name in models folder
+    params: # Dictionary passed to the model as a dictionary
+        n_layers: 6
+        # Dimensions for transformer layer
+        input_dims: 
+            X: 5
+            E: 6
+            y: 1
+        hidden_dims:
+            dx: 256 
+            de: 64
+            dy: 64
+            n_head: 8
+            dim_ffX: 256
+            dim_ffE: 128
+            dim_ffy: 128
+        hidden_mlp_dims:
+            X: 256
+            E: 128
+            y: 128
+
+optim:
+    name: AdamW # AdamW
+    params: # Dictionary passed to the optimiser as **params
+        lr: 3.e-4
+        weight_decay: 1.e-12
+        amsgrad: True
+
+diffusion:
+    timesteps: 500
+    noise_schedule: Cosine # Cosine, Linear
+    beta_min: 0.0
+    beta_max: 0.999
+
+dataset:
+    name: QM9Data # Must match class name in datasets folder
+    batch_size: 512 # per GPU
+    val_batch_size: 20 # Total
+    train_split_size: 100000 # Optional. Number of samples in training split, remaining will be in validaiton split
+    path: data/qm9
+    remove_h: True
+    categorical_types: True
+    # categorical_angles: False
+    
+training:
+    epochs: 1000
+    run_name: cat_noH_cosine # Name of folder created in /runs
+    val_n_epochs: 5 # Run validation and save a checkpoint every n epoch 
+    resume_epoch: 0 # Resume from an epoch that has a checkpoint
+    val_samples: 1000

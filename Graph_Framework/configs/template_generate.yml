@@ -1,0 +1,16 @@
+# All of this should be the same as training file
+diffusion:
+    timesteps: Number of timesteps
+    noise_schedule: Schedule # Cosine, Linear
+    beta_min: 0.0
+    beta_max: 0.999
+
+dataset:
+    name: Dataset name # Must match class name in datasets folder
+    batch_size: 512 # per GPU
+    val_batch_size: 20 # Total
+
+sampling:
+    run_name: TestName # Same as training run_name
+    n_samples: Number of samples to generate
+    model_path: path/to/model

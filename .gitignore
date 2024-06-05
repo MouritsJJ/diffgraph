@@ -1,0 +1,8 @@
+# Custom ignores
+.DS_Store
+__pycache__/
+data/
+*.log
+notebooks/*.pt
+test.ipynb
+*.sdf
